@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Task, TaskFormData } from '@/types/task';
 import { useAuth } from './useAuth';
 import { useToast } from '@/hooks/use-toast';
+import { apiUrl } from '@/lib/api';
 
 export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -30,7 +31,7 @@ export function useTasks() {
     if (!user) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/tasks`, {
+      const res = await fetch(apiUrl('/api/tasks'), {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
       });
       if (!res.ok) throw new Error('Failed to fetch tasks');
@@ -54,7 +55,7 @@ export function useTasks() {
   const createTask = async (formData: TaskFormData) => {
     if (!user) return { error: new Error('Not authenticated') };
     try {
-      const res = await fetch(`/api/tasks`, {
+      const res = await fetch(apiUrl('/api/tasks'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +85,7 @@ export function useTasks() {
 
   const updateTask = async (taskId: string, updates: Partial<Task>) => {
     try {
-      const res = await fetch(`/api/tasks/${taskId}`, {
+      const res = await fetch(apiUrl(`/api/tasks/${taskId}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +111,7 @@ export function useTasks() {
 
   const deleteTask = async (taskId: string) => {
     try {
-      const res = await fetch(`/api/tasks/${taskId}`, {
+      const res = await fetch(apiUrl(`/api/tasks/${taskId}`), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

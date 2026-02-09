@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
+import { apiUrl } from '@/lib/api';
 
 export function SettingsPage() {
   const { user, signOut } = useAuth();
@@ -64,7 +65,7 @@ export function SettingsPage() {
 
     setUpdating(true);
     try {
-      const res = await fetch('/api/auth/password', {
+      const res = await fetch(apiUrl('/api/auth/password'), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
