@@ -94,7 +94,7 @@ export function AuthForm() {
   return (
     <div className="min-h-screen bg-background">
       <div className="min-h-screen w-full lg:flex">
-        <div className="w-full lg:w-[30%] bg-white dark:bg-[#141414] flex items-center justify-center p-6 lg:p-6">
+        <div className="w-full min-h-screen lg:w-[30%] bg-white dark:bg-[#141414] flex items-center justify-center p-6 lg:p-6">
           <div className="w-full max-w-md animate-fade-in lg:-translate-y-6">
             <div className="bg-card rounded-2xl border border-dashed border-border md:border-0 md:border-transparent p-8 shadow-soft md:shadow-none">
           {/* Header inside container */}
