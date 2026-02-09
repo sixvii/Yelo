@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Yello Task Management Design System */
+
+@layer base {
+  :root {
+    /* Core backgrounds */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+
+    /* Cards and containers */
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Primary - Gold accent */
+    --primary: 43 96% 56%;
+    --primary-foreground: 220 20% 10%;
+
+    /* Secondary - Soft gray */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 20%;
+
+    /* Muted elements */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    /* Accent - Light gold */
+    --accent: 43 96% 95%;
+    --accent-foreground: 43 96% 35%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 20% 10%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 43 96% 56%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 10% 30%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 43 96% 95%;
+    --sidebar-accent-foreground: 43 96% 35%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 43 96% 56%;
+
+    /* Custom tokens */
+    --gold: 43 96% 56%;
+    --gold-light: 43 96% 95%;
+    --gold-dark: 43 96% 40%;
+    
+    /* Task priorities */
+    --priority-low: 142 71% 45%;
+    --priority-medium: 38 92% 50%;
+    --priority-high: 0 84% 60%;
+
+    /* Categories */
+    --category-work: 217 91% 60%;
+    --category-personal: 280 65% 60%;
+    --category-study: 142 71% 45%;
+    --category-health: 0 84% 60%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 43 96% 56%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 43 80% 15%;
+    --accent-foreground: 43 96% 70%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 80% 45%;
+    --warning-foreground: 0 0% 5%;
+
+    --info: 217 80% 55%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 43 96% 56%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 43 80% 15%;
+    --sidebar-accent-foreground: 43 96% 70%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 43 96% 56%;
+
+    --gold: 43 96% 56%;
+    --gold-light: 43 80% 15%;
+    --gold-dark: 43 96% 70%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  /* Dashed border utility */
+  .border-dashed-gray {
+    border-style: dashed;
+    border-color: hsl(var(--border));
+  }
+
+  /* Gold gradient */
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, hsl(43 96% 56%) 0%, hsl(43 96% 45%) 100%);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  /* Focus ring */
+  .focus-gold {
+    @apply focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none;
+  }
+
+  /* Task card */
+  .task-card {
+    @apply bg-card rounded-xl p-4 border border-dashed border-border shadow-sm card-hover;
+  }
+
+  /* Priority badges */
+  .priority-low {
+    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+  }
+  
+  .priority-medium {
+    @apply bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+  
+  .priority-high {
+    @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400;
+  }
+
+  /* Category badges */
+  .category-work {
+    @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+
+  .category-personal {
+    @apply bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400;
+  }
+
+  .category-study {
+    @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400;
+  }
+
+  .category-health {
+    @apply bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400;
+  }
+
+  /* Calendar day styles */
+  .calendar-day {
+    @apply relative flex items-center justify-center h-10 w-10 rounded-lg text-sm font-medium transition-all duration-150;
+  }
+
+  .calendar-day-current {
+    @apply bg-[#E8EDEB] text-primary-foreground dark:text-black font-semibold;
+  }
+
+  .calendar-day-selected {
+    @apply text-foreground dark:text-black ring-2;
+    background-color: #E8EDEB;
+    border-color: #01684A;
+  }
+
+  .calendar-day-has-task::after {
+    content: '';
+    @apply absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary;
+  }
+
+  /* Bottom nav styles */
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center gap-1 py-2 px-4 rounded-xl transition-all duration-200;
+  }
+
+  .bottom-nav-item-active {
+    @apply border-2;
+    background-color: #E8EDEB;
+    border-color: #9FC1FC;
+    color: #14181F;
+  }
+
+  .bottom-nav-item-active-text {
+    color: #14181F;
+  }
+
+  /* Timer display */
+  .timer-display {
+    @apply text-6xl font-bold tracking-tight tabular-nums;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Pulse animation for timer */
+  .pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
